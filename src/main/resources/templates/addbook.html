@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body class="d-flex flex-column min-vh-100 min-vw-100">
+
+    <h1 class="d-flex justify-content-center">Add new book</h1>
+
+    <div class="d-flex flex-grow-1 justify-content-center">
+        <form th:object="${book}" th:action="@{save}" action="#" method="post" class="border border-secondary h-50">
+            <div class="form-control-sm">
+                <label for="title">Title: </label> <br />
+                <input type="text" id="title" th:field="*{title}" required />
+            </div>
+            <div class="form-control-sm">
+                <label for="author">Author: </label> <br />
+                <input type="text" id="author" th:field="*{author}" required />
+            </div>
+            <div class="form-control-sm">
+                <label for="isbn">ISBN: </label> <br />
+                <input type="text" id="isbn" th:field="*{isbn}" required />
+            </div>
+            <div class="form-control-sm">
+                <label for="year">Publication year: </label> <br />
+                <input type="text" id="year" th:field="*{publicationYear}" required />
+            </div>
+            <div class="form-control-sm">
+                <label for="price">Price: </label> <br />
+                <input type="text" id="price" th:field="*{price}" required />
+            </div>
+            <input class="btn btn-secondary btn-sm" style="margin-left: 8px; margin-bottom: 2px;" type="submit"
+                value="Add" />
+            <input class="btn btn-secondary btn-sm" type="reset" value="Clear" style="margin-bottom: 2px;" />
+            <input class="btn btn-secondary btn-sm" type="button" onclick="location.href='/booklist'" value="Cancel"
+                style="margin-bottom: 2px;" />
+        </form>
+    </div>
+
+</body>
+
+</html>
