@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
+    <style>
+        .form-width {
+            width: 250px;
+        }
+
+        .form-control-sm input[type="text"] {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100 min-vw-100">
+
+    <h1 class="d-flex justify-content-center">Add new category</h1>
+
+    <div class="d-flex flex-grow-1 justify-content-center">
+        <form th:object="${category}" th:action="@{/savecategory}" action="#" method="post"
+            class="border border-secondary h-50 form-width">
+            <div class="form-control-sm">
+                <label for="name">Category Name: </label> <br />
+                <input type="text" id="name" th:field="*{name}" required />
+            </div>
+
+            <input class="btn btn-secondary btn-sm" style="margin-left: 8px; margin-bottom: 2px;" type="submit"
+                value="Add" />
+            <input class="btn btn-secondary btn-sm" type="reset" value="Clear" style="margin-bottom: 2px;" />
+            <input class="btn btn-secondary btn-sm" type="button" onclick="location.href='/categorylist'" value="Cancel"
+                style="margin-bottom: 2px;" />
+        </form>
+    </div>
+
+</body>
+
+</html>

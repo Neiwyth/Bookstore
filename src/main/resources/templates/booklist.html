@@ -12,7 +12,8 @@
         <table class="table table-striped table-sm w-50 mx-auto caption-top">
             <caption>
                 <h1 style="color: black;">Books</h1>
-                <input type="submit" value="Add Book" onClick="location.href='/add'" class="btn btn-secondary btn-sm" />
+                <input type="submit" value="Add Book" onClick="location.href='/addbook'"
+                    class="btn btn-secondary btn-sm" />
             </caption>
             <thead>
                 <tr>
@@ -31,10 +32,10 @@
                     <td th:text="${book.publicationYear}"></td>
                     <td th:text="${book.price}"></td>
                     <td>
-                        <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm">Delete</a>
+                        <a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                     <td>
-                        <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-secondary btn-sm">Edit</a>
+                        <a th:href="@{/editbook/{id}(id=${book.id})}" class="btn btn-secondary btn-sm">Edit</a>
                     </td>
                 </tr>
                 </tdoby>
