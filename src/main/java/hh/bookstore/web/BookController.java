@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.bookstore.domain.Book;
 import hh.bookstore.domain.BookRepository;
+import hh.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
@@ -16,6 +17,10 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    // list all books
     @GetMapping("/booklist")
     public String showAllBooks(Model model) {
 
@@ -23,13 +28,16 @@ public class BookController {
         return "booklist";
     }
 
+    // add new book
     @GetMapping("/addbook")
     public String addBook(Model model) {
 
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
+    // save new book or book edits
     @PostMapping("/savebook")
     public String saveBook(Book book) {
 
@@ -37,17 +45,20 @@ public class BookController {
         return "redirect:/booklist";
     }
 
+    // delete book
     @GetMapping("/deletebook/{id}")
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 
         bookRepository.deleteById(bookId);
-        return "redirect:../booklist";
+        return "redirect:/booklist";
     }
 
+    // edit book
     @GetMapping("/editbook/{id}")
     public String editBook(@PathVariable("id") Long bookId, Model model) {
 
         model.addAttribute("book", bookRepository.findById(bookId));
+        model.addAttribute("categories", categoryRepository.findAll());
         return "editbook";
     }
 }

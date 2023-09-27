@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.bookstore.domain.Category;
@@ -15,6 +16,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    // show all categories
     @GetMapping("/categorylist")
     public String categoryList(Model model) {
 
@@ -22,6 +24,7 @@ public class CategoryController {
         return "categorylist";
     }
 
+    // add new category
     @GetMapping("/addcategory")
     public String addCategory(Model model) {
 
@@ -29,10 +32,19 @@ public class CategoryController {
         return "addcategory";
     }
 
+    // save new category
     @PostMapping("/savecategory")
     public String saveCategory(Category category) {
 
         categoryRepository.save(category);
+        return "redirect:/categorylist";
+    }
+
+    // delete category
+    @GetMapping("/deletecategory/{id}")
+    public String deleteCategory(@PathVariable("id") Long categoryId, Model model) {
+
+        categoryRepository.deleteById(categoryId);
         return "redirect:/categorylist";
     }
 

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Booklist</title>
+    <title>Categorylist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
@@ -14,6 +14,8 @@
                 <h1 style="color: black;">Categories</h1>
                 <input type="submit" value="Add Category" onClick="location.href='/addcategory'"
                     class="btn btn-secondary btn-sm" />
+                <input type="submit" value="Booklist" onClick="location.href='/booklist'"
+                    class="btn btn-secondary btn-sm" />
             </caption>
             <thead>
                 <tr>
@@ -23,12 +25,10 @@
             <tbody class="table-group-divider text-center">
                 <tr th:each=" category : ${categories}">
                     <td th:text="${category.name}"></td>
-                    <!-- <td>
-                        <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
                     <td>
-                        <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-secondary btn-sm">Edit</a>
-                    </td> -->
+                        <a th:href="@{/deletecategory/{id}(id=${category.categoryId})}"
+                            class="btn btn-danger btn-sm">Delete</a>
+                    </td>
                 </tr>
                 </tdoby>
         </table>
