@@ -26,13 +26,13 @@
             <thead>
                 <tr>
                     <th class="text-center">Category Name</th>
-                    <th sec:authorize="hasRole('ADMIN')"></th>
+                    <th sec:authorize="hasAuthority('ADMIN')"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text-center">
                 <tr th:each=" category : ${categories}">
                     <td th:text="${category.name}"></td>
-                    <td sec:authorize="hasRole('ADMIN')">
+                    <td sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/deletecategory/{id}(id=${category.categoryId})}"
                             class="btn btn-danger btn-sm">Delete</a>
                     </td>

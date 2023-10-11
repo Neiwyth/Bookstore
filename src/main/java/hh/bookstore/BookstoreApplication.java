@@ -11,6 +11,8 @@ import hh.bookstore.domain.Book;
 import hh.bookstore.domain.BookRepository;
 import hh.bookstore.domain.Category;
 import hh.bookstore.domain.CategoryRepository;
+import hh.bookstore.domain.User;
+import hh.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,7 +24,8 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner Demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
+	public CommandLineRunner Demo(BookRepository bookRepository, CategoryRepository categoryRepository,
+			UserRepository userRepository) {
 		return (args) -> {
 
 			log.info("Save some categories");
@@ -44,6 +47,13 @@ public class BookstoreApplication {
 					new Book("The Commuter Pig Keeper", "Michaela Giles", 2016, "978-1910455531", category2, 28.78));
 			bookRepository
 					.save(new Book("How to Read and Why", "Harold Bloom", 2001, "978-1841150390", category2, 10.00));
+
+			User user1 = new User("user", "$2a$10$e7xgXetJjrul6aSboZUZy.xRDujw4kY25OYIThJGv9b4ELnWYDBFm",
+					"A@B.testmail", "USER");
+			userRepository.save(user1);
+			User user2 = new User("admin", "$2a$10$Xwnklf4CPt84B4ZV3n46yelvJ9eoDf.lbNY2B87yctClchLE2MhJS",
+					"B@A.testmail", "ADMIN");
+			userRepository.save(user2);
 
 			log.info("Fetch all categories");
 			for (Category category : categoryRepository.findAll()) {

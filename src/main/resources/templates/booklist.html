@@ -31,7 +31,7 @@
                     <th class="text-center">Year</th>
                     <th class="text-center">Category</th>
                     <th class="text-center">Price (€)</th>
-                    <th sec:authorize="hasRole('ADMIN')"></th>
+                    <th sec:authorize="hasAuthority('ADMIN')"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text-center">
@@ -45,7 +45,7 @@
                     <td>
                         <a th:href="@{/editbook/{id}(id=${book.id})}" class="btn btn-secondary btn-sm">Edit</a>
                     </td>
-                    <td sec:authorize="hasRole('ADMIN')">
+                    <td sec:authorize="hasAuthority('ADMIN')">
                         <a th:href="@{/deletebook/{id}(id=${book.id})}" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
