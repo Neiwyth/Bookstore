@@ -32,6 +32,8 @@
                     <th class="text-center">Category</th>
                     <th class="text-center">Price (€)</th>
                     <th sec:authorize="hasAuthority('ADMIN')"></th>
+                    <th sec:authorize="hasAuthority('USER')"></th>
+                    <th sec:authorize="hasAuthority('ADMIN')"></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider text-center">
